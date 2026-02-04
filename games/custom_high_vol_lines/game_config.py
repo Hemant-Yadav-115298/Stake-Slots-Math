@@ -81,8 +81,8 @@ class GameConfig(Config):
         self.special_symbols = {"wild": ["W"], "scatter": ["S"]}
 
         self.freespin_triggers = {
-            self.basegame_type: {3: 10, 4: 15, 5: 20},
-            self.freegame_type: {3: 5, 4: 10, 5: 15},
+            self.basegame_type: {3: 10, 4: 15, 5: 20, 6: 20, 7: 20, 8: 20, 9: 20, 10: 20, 11: 20, 12: 20, 13: 20, 14: 20, 15: 20},
+            self.freegame_type: {3: 5, 4: 10, 5: 15, 6: 15, 7: 15, 8: 15, 9: 15, 10: 15, 11: 15, 12: 15, 13: 15, 14: 15, 15: 15},
         }
         self.anticipation_triggers = {
             self.basegame_type: 2,
@@ -144,13 +144,13 @@ class GameConfig(Config):
                 distributions=[
                     Distribution(
                         criteria="wincap",
-                        quota=0.001,
+                        quota=0.000002,
                         win_criteria=mode_maxwins["base"],
                         conditions=wincap_condition,
                     ),
-                    Distribution(criteria="freegame", quota=0.1, conditions=freegame_condition),
-                    Distribution(criteria="0", quota=0.4, win_criteria=0.0, conditions=zerowin_condition),
-                    Distribution(criteria="basegame", quota=0.5, conditions=basegame_condition),
+                    Distribution(criteria="freegame", quota=0.10, conditions=freegame_condition),
+                    Distribution(criteria="0", quota=0.40, win_criteria=0.0, conditions=zerowin_condition),
+                    Distribution(criteria="basegame", quota=0.499998, conditions=basegame_condition),
                 ],
             )
         ]

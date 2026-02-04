@@ -64,4 +64,7 @@ if __name__ == "__main__":
         create_stat_sheet(gamestate, custom_keys=custom_keys)
 
     if run_conditions["run_format_checks"]:
+        # Change to root directory for verification to find paths correctly
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+        os.chdir(project_root)
         execute_all_tests(config)
