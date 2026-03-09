@@ -1,10 +1,10 @@
-"""Set conditions/parameters for optimization program for Mining Ways Hold & Spin game.
+"""Set conditions/parameters for optimization program for TBD 15625 Ways game.
 
 RTP Split Targets (96%):
 - Base game:  58% of total RTP
 - Free Spins: 20% of total RTP
 - Hold & Spin: 15% of total RTP
-- Jackpot:     3% of total RTP
+- Jackpot:     3% of total RTP (included in H&S allocation)
 """
 
 from optimization_program.optimization_config import (
@@ -17,7 +17,7 @@ from optimization_program.optimization_config import (
 
 
 class OptimizationSetup:
-    """Game specific optimization setup for Mining Ways Hold & Spin.
+    """Game specific optimization setup for TBD 15625 Ways.
 
     Configures the optimization algorithm with:
     - Target RTPs per distribution criteria
@@ -44,19 +44,19 @@ class OptimizationSetup:
                     # Free game criteria - target 20% RTP allocation
                     "freegame": ConstructConditions(
                         rtp=0.20,
-                        hr=200,
+                        hr=150,
                         search_conditions={"symbol": "scatter"},
                     ).return_dict(),
-                    # Hold & Spin criteria - target 15% RTP allocation
+                    # Hold & Spin criteria - target 18% RTP allocation (includes jackpot)
                     "holdnspin": ConstructConditions(
-                        rtp=0.15,
-                        hr=300,
+                        rtp=0.18,
+                        hr=200,
                         search_conditions={"symbol": "money", "feature": "holdnspin"},
                     ).return_dict(),
-                    # Base game criteria - 61% RTP (includes jackpot + max win allocation)
+                    # Base game criteria - 58% RTP
                     "basegame": ConstructConditions(
                         hr=4.1,
-                        rtp=0.61,
+                        rtp=0.58,
                     ).return_dict(),
                 },
                 "scaling": ConstructScaling(
@@ -75,26 +75,26 @@ class OptimizationSetup:
                         },
                         {
                             "criteria": "freegame",
-                            "scale_factor": 0.8,
-                            "win_range": (500, 1000),
+                            "scale_factor": 0.9,
+                            "win_range": (200, 500),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "freegame",
-                            "scale_factor": 1.2,
-                            "win_range": (2000, 3500),
+                            "scale_factor": 1.1,
+                            "win_range": (1000, 2500),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "holdnspin",
                             "scale_factor": 0.9,
-                            "win_range": (50, 200),
+                            "win_range": (20, 100),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "holdnspin",
-                            "scale_factor": 1.3,
-                            "win_range": (500, 2000),
+                            "scale_factor": 1.2,
+                            "win_range": (200, 1000),
                             "probability": 1.0,
                         },
                     ]
@@ -129,19 +129,19 @@ class OptimizationSetup:
                         {
                             "criteria": "freegame",
                             "scale_factor": 0.9,
-                            "win_range": (20, 50),
+                            "win_range": (20, 100),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "freegame",
-                            "scale_factor": 0.8,
-                            "win_range": (1000, 2000),
+                            "scale_factor": 1.0,
+                            "win_range": (500, 1000),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "freegame",
-                            "scale_factor": 1.2,
-                            "win_range": (3000, 4500),
+                            "scale_factor": 1.1,
+                            "win_range": (2000, 4000),
                             "probability": 1.0,
                         },
                     ]
@@ -172,19 +172,19 @@ class OptimizationSetup:
                         {
                             "criteria": "holdnspin",
                             "scale_factor": 0.9,
-                            "win_range": (20, 100),
+                            "win_range": (10, 50),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "holdnspin",
-                            "scale_factor": 1.2,
-                            "win_range": (500, 2000),
+                            "scale_factor": 1.1,
+                            "win_range": (200, 800),
                             "probability": 1.0,
                         },
                         {
                             "criteria": "holdnspin",
-                            "scale_factor": 1.5,
-                            "win_range": (3000, 4500),
+                            "scale_factor": 1.3,
+                            "win_range": (1500, 3500),
                             "probability": 1.0,
                         },
                     ]
